@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, type LinkProps } from 'react-router-dom';
 import { ComponentPropsWithoutRef, type ReactNode } from 'react';
 
 type ButtonProps = ComponentPropsWithoutRef<'button'> & {
@@ -6,13 +6,12 @@ type ButtonProps = ComponentPropsWithoutRef<'button'> & {
   children: ReactNode;
 };
 
-type LinkProps = {
-  to: string;
+type LinkProps2 = LinkProps & {
   textOnly: boolean;
   children: ReactNode;
 };
 
-const Button = ({ textOnly, children, ...props }: ButtonProps | LinkProps) => {
+const Button = ({ textOnly, children, ...props }: ButtonProps | LinkProps2) => {
   if ('to' in props) {
     return (
       <Link
